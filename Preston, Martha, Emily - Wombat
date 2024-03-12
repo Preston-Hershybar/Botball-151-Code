@@ -1,0 +1,22 @@
+int main ()
+{
+
+//go forward out of the small start box
+	motor(0, 80);
+	Motor(3, 80);
+	msleep(2000);
+
+//make a backwards turn left until the robot reaches the divider between the two sides of the board
+while(digital (0) < 1) || (digital (3) < 1)
+{
+		motor(0, -80);
+		motor(3, -5);
+}
+
+//go forward a little until in between the noodles and noodles and divider
+	motor(0, 80);
+	motor(0, 80);
+	msleep(700);
+
+return 0;
+}
