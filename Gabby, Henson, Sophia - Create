@@ -1,0 +1,170 @@
+#include <kipr/wombat.h>
+
+int main()
+{
+enable_servos ();
+
+//open arm 
+set_servo_position (1, 1000);
+msleep (1000);
+
+//forwards out of small rover bay
+сmрс (0) ;
+while (gmpc (0) < 3200)
+{
+motor (0,50); 
+motor (3,50);
+}
+
+//turn towards airlock
+стрс (0) :
+while (gmpc (0) < 300) //300
+{
+motor (0,50); 
+motor (3,0);
+}
+
+//lower arm 
+set_servo_position (0,1564);
+msleep (1000);
+
+//Forwards a little so that the claw can grab the handle
+сmрc (0) ;
+while (gmpc (0) < 700)
+{
+motor (0,50); 
+motor (3,50);
+}
+
+//close claw
+set_servo_position (1,500);
+msleep (1000);
+
+//backwards a little
+cmpc(0);
+while (gmpc (0) > -200)
+{
+motor (0,-50); 
+motor (3,-50);
+}
+
+/ /Pause
+motor (0,0);
+motor (3,0); 
+msleep (500) ;
+
+//Backwards away from airlock
+
+cmpc(0) :
+while (gmpc(0) > -800)
+{
+motor (0,-50); 
+motor (3,-50);
+}
+cmpc(0) ;
+//Pause
+motor (0,0); 
+motor (3,0);
+msleep(500);
+
+////open arm
+set_servo position(1,1400); 
+msleep (100);
+
+/ /Pause
+motor (0,0);
+motor (3,0); 
+msleep (500);
+
+//raise arm
+set_servo_position(0,750);
+msleep (1000);
+
+//forwards out towards airlock
+cmpc(0) :
+while (gmpc (0) < 300)
+{
+motor (0,50); 
+motor (3,50);
+{
+
+////open arm
+set_servo position(1,1400) ;
+msleep(1000);
+
+//turn towards pole
+cmpc(0) :
+while (gmpc (0) < 4700)
+{
+motor (0,50); 
+motor (3,0);
+}
+
+cmpc( 0) ;
+while (gmpc (0) < 500)
+{
+motor (0,50); 
+motor (3,30);
+	}
+
+set_servo position(1,800);
+msleep (100);
+
+//Backwards away from pole
+cmpc(0) ;
+while (gmpc (0) > 500)
+{
+motor (0,50); 
+motor (3,50);
+}
+
+set_servo_position(1,800); 
+msleep (100);
+
+//Backwards away from pole
+cmpc( 0);
+while (gmpc (0) > 500)
+{
+motor (0,50); 
+motor (3,50);
+}
+
+//Backwards away from airlock
+set_servo position(1,300); 
+msleep (100);
+
+cmpc( 0) ;
+while (gmpc (0) > 900)
+{
+motor (0,50); 
+motor (3,50);
+}
+
+//Backwards away from airlock
+set_servo_position(1,200); 
+msleep (100);
+
+//Backwards away from airlock 
+set_servo_position (1, 150); 
+msleep (100);
+
+cmpc(0) ;
+while (gmpc (0) > 900)
+{
+motor (0,50);
+motor (3,50) ;
+}
+
+//Backwards away from airlock 
+set_servo_position (1, 100); 
+msleep (100);
+
+cmpc (0);
+while (gmpc(0) > 1500)
+{
+motor (0,50);
+motor (3,50) ;
+}
+
+disable servos ();
+return 0;
