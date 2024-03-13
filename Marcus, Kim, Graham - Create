@@ -1,0 +1,25 @@
+int main()
+{
+create_connect () ;
+
+set create_distance (0);
+
+while (get_create_distance ( )<610){
+create_drive_direct (100, 100) ;
+}
+
+set_create_total._angle (0);
+
+while (get_create_total_angle ( )>-90){
+create drive direct (100, -100);
+｝
+
+set_create_distance (0) ;
+
+while (get_create_distance ()<305){
+create_drive_direct (100,100);
+}
+
+create_disconnect ();
+return 0;
+｝
