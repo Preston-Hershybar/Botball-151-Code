@@ -1,1 +1,134 @@
+#include <kipr/wombat.h>
+//The lowest the arm can physically go without crashing into the ground
+const int l = 1238;
+//the middle number that allows the servo arm to say the in the middle
+const int m = 827;
+// the servo position that allows for the claw to fully close
+const int c = 1938;
+// the servo position that opens the claw enough the grab blue poms
+const int 0 = 1352;
+int main()
+｛
+
+enable_servos ();
+
+// resets everything
+cmpc (0);
+cmpc (3) ;
+ssc(o);
+ssa(m) ;
+
+// the main code
+
+// open air lock
+f(3600);
+turnL(28);
+ssa(l);
+f(2100);
+ssc(c);
+p(2);
+b(1400);
+ssc(0);
+ssa(m);
+turnBR(30);
+
+// get to the lava pit
+p(1) ;
+f(11575);
+turnR(90);
+f(1400);
+p(1) ;
+
+// move poms to the side
+ssa（1）；
+printf ("Done \n");
+disable_servos(); 
+ao() ;
+return 0;
+}
+
+// move forward certain degrees
+void f (int distance) {
+  cmpc (0) ;
+  while(gmpc(0) < distance) {
+    mav (0, 1000); 
+    mav (3, 1000);
+    }
+    ao() ;
+}
+
+//move backward certain distance
+void b (int distance) {
+while(abs(gmpc(0)) <= distance) {
+mav (0, -1000); 
+mav (3, -1000);
+}
+ao() ;
+}
+
+// turn left certain degrees
+void turnl(int degrees) {
+while(gmpc(0) <= (degrees * 25.5)) {
+mav (0, 1000); 
+mav (3, 0);
+}
+ao();
+}
+
+// turn right certain degrees
+void turnR(int degrees) {
+cmpc (3) ;
+while(gmpc(3) <= (degrees * 25.5)) {
+mav (3, 1000); 
+mav (0, 0);
+｝
+ao() ;
+}
+
+// set servo posiiton for arm
+void ssa(int pos) {
+  int initialT = seconds();
+  while(seconds() - initialT « 1) { 
+      set_servo_position(3, pos);
+｝
+ao() ;
+
+// set servo position for claw
+void ssc(int pos) {
+  int initialT = seconds();
+  while(seconds() - initialT <= 1) {
+    set_servo_position(1, pos);
+}
+ao() ;
+｝
+
+// turn backward left certain degrees
+void turnBL(int degrees) {
+  cmpc (3) ;
+  while(abs (gmpc(3)) < degrees * 25.5) {
+      mav (3,-1000);
+      mav (0,0);
+}
+
+｝
+ao();
+｝
+
+// turns backward right certain degrees
+void turnBR(int degrees) {
+cmpc (0) ;
+    while(abs(gmpc(0)) < degrees * 25.5) {
+      mav (3, 0); 
+      mav (0, -1000);
+}
+ao() ;
+}
+
+// makes a pause in the code for a certain amount of seconds
+void p(int t) {
+  int initialT = seconds);
+    while(seconds() - initialT < t) {
+ao() ;
+｝
+}
 
